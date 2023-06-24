@@ -40,6 +40,8 @@
 *.sdf
 *.VC.db
 *.VC.opendb
+*.idea
+*.vsconfig
 
 # Precompiled Assets
 SourceArt/**/*.png
