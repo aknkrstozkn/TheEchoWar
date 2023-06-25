@@ -3,11 +3,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/DefaultPawn.h"
 #include "TEWCameraPawn.generated.h"
 
+struct FInputActionValue;
+
 UCLASS()
-class THEECHOWAR_API ATEWCameraPawn : public ADefaultPawn
+class THEECHOWAR_API ATEWCameraPawn : public APawn
 {
 	GENERATED_BODY()
 
@@ -26,6 +27,9 @@ public:
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* TopDownCameraComponent;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Movement, meta = (AllowPrivateAccess = "true"))
+	class UPawnMovementComponent* MovementComponent;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class USpringArmComponent* CameraBoom;

@@ -1,9 +1,14 @@
 ﻿#include "TEWCameraPawn.h"
+
+#include "InputActionValue.h"
 #include "Camera/CameraComponent.h"
+#include "GameFramework/FloatingPawnMovement.h"
+#include "GameFramework/PawnMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 
 ATEWCameraPawn::ATEWCameraPawn()
 {
+	//bAddDefaultMovementBindings = false;
 	PrimaryActorTick.bCanEverTick = true;
 
 	bUseControllerRotationPitch = false;
@@ -20,6 +25,9 @@ ATEWCameraPawn::ATEWCameraPawn()
 	TopDownCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("TopDownCamera"));
 	TopDownCameraComponent->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 	TopDownCameraComponent->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
+
+	MovementComponent = CreateDefaultSubobject<UPawnMovementComponent, UFloatingPawnMovement>(TEXT("CameraMovementComponent"));
+	MovementComponent->SetUpdatedComponent(RootComponent);
 }
 
 void ATEWCameraPawn::BeginPlay()
